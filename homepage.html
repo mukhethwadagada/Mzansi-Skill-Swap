@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mzansi SkillSwap - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #3498db, #2c3e50); /* Blue to dark blue-grey */
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Prevent scrollbars from animations */
+
+            /* Background gradient animation */
+            background-size: 400% 400%;
+            animation: backgroundGradient 15s ease infinite;
+        }
+
+        @keyframes backgroundGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(44, 62, 80, 0.9); /* Dark blue-grey transparent */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            opacity: 0; /* Start hidden for fade-in */
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #f1c40f; /* Yellow */
+            text-shadow: 0 0 15px rgba(241, 196, 15, 0.8);
+        }
+
+        /* Home Page Specific Styles */
+        #home-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px; /* Adjust as needed */
+            padding: 20px;
+        }
+
+        #home-page h2 {
+            font-size: 2.5em;
+            color: #f1c40f;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 0.8s ease-out 0.8s forwards; /* Delayed animation */
+        }
+
+        #home-page p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 600px;
+            color: rgba(236, 240, 241, 0.9);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 0.8s ease-out 1s forwards; /* Delayed animation */
+        }
+
+        #enterAppButton {
+            background-color: #3498db; /* Blue */
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            animation: pulse 2s infinite ease-in-out 1.5s forwards; /* Pulsing animation */
+        }
+
+        #enterAppButton:hover {
+            background-color: #2980b9;
+            transform: translateY(-4px) scale(1.05); /* Slightly larger on hover */
+            animation: none; /* Stop pulse on hover */
+        }
+
+        /* Icon Styling */
+        .home-icon {
+            font-size: 3em;
+            color: #27ae60; /* Emerald Green */
+            margin: 0 15px;
+            animation: bounceIn 1s ease-out 0.5s forwards, float 3s ease-in-out infinite 1.5s; /* Combined animations */
+            opacity: 0; /* Start hidden for bounce-in */
+            display: inline-block; /* Essential for transform */
+        }
+
+        .home-icon:nth-child(2) { animation-delay: 0.7s, 1.7s; } /* Stagger animation */
+        .home-icon:nth-child(3) { animation-delay: 0.9s, 1.9s; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            #home-page h2 {
+                font-size: 2em;
+            }
+            #home-page p {
+                font-size: 1em;
+            }
+            #enterAppButton {
+                font-size: 1.1em;
+                padding: 12px 25px;
+            }
+            .home-icon {
+                font-size: 2.5em; /* Smaller icons on mobile */
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mzansi SkillSwap</h1>
+        
+        <!-- Home Page Content -->
+        <div id="home-page" class="tab-content active">
+            <h2>Welcome to Mzansi SkillSwap!</h2>
+            <p>
+                <i class="fas fa-handshake home-icon"></i>
+                <i class="fas fa-lightbulb home-icon"></i>
+                <i class="fas fa-users home-icon"></i>
+            </p>
+            <p>
+                Connect with your community to exchange skills and services without money.
+                Whether you need a hand with gardening, want to learn a new language,
+                or can offer your plumbing expertise, Mzansi SkillSwap helps you
+                find and provide value locally. Build stronger bonds, share talents,
+                and empower your neighbourhood!
+            </p>
+            <button id="enterAppButton">Start Swapping!</button>
+        </div>
+    </div>
+</body>
+</html>
