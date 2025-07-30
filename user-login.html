@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Log In - Mzansi Skill Exchange</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Lighter, modern background */
+            color: #1e293b; /* Darker text for strong contrast */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg w-full max-w-md border border-gray-100">
+        <div class="text-center mb-8">
+            <!-- Dynamic SVG icon based on active form -->
+            <svg id="authIcon" class="h-12 w-12 text-indigo-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <!-- Default to Login icon -->
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+            <h2 id="authTitle" class="text-3xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
+            <p id="authSubtitle" class="text-gray-600">Log in to your Mzansi Skill Exchange account.</p>
+        </div>
+
+        <!-- Message display area -->
+        <div id="message" class="mb-4 text-center text-sm font-medium"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form">
+            <div class="mb-5">
+                <label for="loginEmail" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                <input type="email" id="loginEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" placeholder="you@example.com" required>
+            </div>
+            <div class="mb-6">
+                <label for="loginPassword" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                <input type="password" id="loginPassword" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" placeholder="••••••••" required>
+                <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800 float-right mt-1 font-medium">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 shadow-md transform hover:scale-105">
+                Log In
+            </button>
+        </form>
+
+        <!-- Sign Up Form (hidden by default) -->
+        <form id="signupForm" class="auth-form hidden">
+            <div class="mb-5">
+                <label for="fullName" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+                <input type="text" id="fullName" name="fullName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" placeholder="John Doe" required>
+            </div>
+            <div class="mb-5">
+                <label for="signupEmail" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                <input type="email" id="signupEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" placeholder="you@example.com" required>
+            </div>
+            <div class="mb-5">
+                <label for="signupPassword" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                <input type="password" id="signupPassword" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" placeholder="••••••••" required>
+            </div>
+            <div class="mb-6">
+                <label for="confirmPassword" class="block text-gray-700 text-sm font-medium mb-2">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 shadow-md transform hover:scale-105">
+                Sign Up
+            </button>
+        </form>
+
+        <!-- Toggle Links -->
+        <p class="text-center text-gray-600 text-sm mt-6">
+            <span id="toggleText">Don't have an account?</span>
+            <a href="#" id="toggleAuthMode" class="text-indigo-600 hover:text-indigo-800 font-medium">Sign Up</a>
+        </p>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // Global variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // DOM Elements
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const toggleAuthModeButton = document.getElementById('toggleAuthMode');
+        const toggleText = document.getElementById('toggleText');
+        const messageDiv = document.getElementById('message');
+        const authTitle = document.getElementById('authTitle');
+        const authSubtitle = document.getElementById('authSubtitle');
+        const authIcon = document.getElementById('authIcon');
+
+        // SVG Path Data for icons
+        const loginIconPath = "M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z";
+        const signupIconPath = "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z";
+
+        let isLoginMode = true; // State to track current form mode
+
+        // Function to display messages to the user
+        function displayMessage(message, type = 'success') {
+            messageDiv.textContent = message;
+            if (type === 'success') {
+                messageDiv.className = 'mb-4 text-center text-sm font-medium text-green-600';
+            } else {
+                messageDiv.className = 'mb-4 text-center text-sm font-medium text-red-600';
+            }
+        }
+
+        // Function to toggle between login and signup forms
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            if (isLoginMode) {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                toggleText.textContent = "Don't have an account?";
+                toggleAuthModeButton.textContent = "Sign Up";
+                authTitle.textContent = "Welcome Back!";
+                authSubtitle.textContent = "Log in to your Mzansi Skill Exchange account.";
+                authIcon.querySelector('path').setAttribute('d', loginIconPath);
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                toggleText.textContent = "Already have an account?";
+                toggleAuthModeButton.textContent = "Log In";
+                authTitle.textContent = "Create Your Account";
+                authSubtitle.textContent = "Join the Mzansi Skill Exchange community!";
+                authIcon.querySelector('path').setAttribute('d', signupIconPath);
+            }
+            // Clear any previous messages when switching forms
+            displayMessage('');
+        }
+
+        // Handle initial authentication (e.g., anonymous sign-in for context)
+        async function authenticateUser() {
+            try {
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Signed in with custom token.");
+                } else {
+                    await signInAnonymously(auth);
+                    console.log("Signed in anonymously.");
+                }
+            } catch (error) {
+                console.error("Firebase authentication error:", error);
+                displayMessage(`Authentication error: ${error.message}`, 'error');
+            }
+        }
+
+        // Call authentication on page load
+        authenticateUser();
+
+        // Event Listeners
+        toggleAuthModeButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleAuthMode();
+        });
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            displayMessage('Logging in...', 'info'); // Show loading message
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                console.log("User logged in successfully!");
+                displayMessage("Logged in successfully! Redirecting...", "success");
+                // In a real application, you would redirect here:
+                // window.location.href = '/dashboard.html';
+            } catch (error) {
+                console.error("Firebase login error:", error);
+                let errorMessage = "An unknown error occurred during login.";
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                    case 'auth/wrong-password':
+                    case 'auth/invalid-credential':
+                        errorMessage = "Invalid email or password.";
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = "The email address is not valid.";
+                        break;
+                    case 'auth/too-many-requests':
+                        errorMessage = "Too many failed login attempts. Please try again later.";
+                        break;
+                    default:
+                        errorMessage = error.message;
+                }
+                displayMessage(errorMessage, "error");
+            }
+        });
+
+        // Handle sign up form submission
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            displayMessage('Creating account...', 'info'); // Show loading message
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                displayMessage("Passwords do not match!", "error");
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                console.log("User signed up:", userCredential.user);
+                displayMessage("Account created successfully! You can now log in.", "success");
+                // Optionally, switch to login form after successful signup
+                toggleAuthMode();
+
+            } catch (error) {
+                console.error("Firebase sign-up error:", error);
+                let errorMessage = "An unknown error occurred during sign up.";
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = "This email address is already in use.";
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = "The email address is not valid.";
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = "The password is too weak (should be at least 6 characters).";
+                        break;
+                    default:
+                        errorMessage = error.message;
+                }
+                displayMessage(errorMessage, "error");
+            }
+        });
+    </script>
+</body>
+</html>

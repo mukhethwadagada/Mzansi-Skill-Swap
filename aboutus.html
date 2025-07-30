@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mzansi Skill Exchange</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Lighter, modern background */
+            color: #1e293b; /* Darker text for strong contrast */
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #64748b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg py-4 px-6 md:px-12 flex justify-between items-center rounded-b-xl">
+        <div class="flex items-center space-x-3">
+            <!-- Logo/Site Name -->
+            <svg class="h-9 w-9 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="text-2xl font-extrabold text-gray-900">Mzansi Skill Exchange</span>
+        </div>
+        <!-- Navigation Links -->
+        <div class="hidden md:flex space-x-8">
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Home</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Browse Skills</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Offer Skills</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">How It Works</a>
+            <a href="#" class="text-indigo-600 font-semibold transition duration-300">About Us</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Contact</a>
+        </div>
+        <!-- Call to Action Buttons -->
+        <div class="flex items-center space-x-4">
+            <button class="hidden md:block px-6 py-2 border border-gray-300 text-gray-800 rounded-full hover:bg-gray-100 transition duration-300 shadow-sm font-medium">Log In</button>
+            <button class="px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg font-semibold transform hover:scale-105">Sign Up</button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 md:px-12 py-12 flex-grow">
+        <h1 class="text-4xl font-extrabold text-gray-900 text-center mb-10">About Mzansi Skill Exchange</h1>
+
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Our Mission</h2>
+            <p class="text-gray-700 leading-relaxed">
+                At Mzansi Skill Exchange, our mission is to empower individuals across South Africa by fostering a vibrant, accessible, and supportive community for **skill sharing and lifelong learning**. We believe that everyone possesses unique talents and knowledge, and by connecting those who want to learn with those who want to teach, we can unlock immense potential and drive collective growth.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-4">
+                We aim to break down barriers to education and personal development, making it easier for South Africans to acquire new skills, enhance existing ones, and share their expertise, contributing to a more skilled and connected nation.
+            </p>
+        </section>
+
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">What We Offer</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.523 5.754 18 7.5 18s3.332.477 4.5 1.247m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.247v13C19.832 18.523 18.246 18 16.5 18s-3.332.477-4.5 1.247" />
+                        </svg>
+                        Diverse Learning Opportunities
+                    </h3>
+                    <p class="text-gray-700">
+                        Whether you're looking to pick up a new hobby, advance your career, or simply explore a new interest, our platform offers a vast array of skills taught by passionate individuals. From digital marketing to traditional crafts, there's always something new to learn.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Platform for Educators
+                    </h3>
+                    <p class="text-gray-700">
+                        If you have a skill to share, Mzansi Skill Exchange provides an easy-to-use platform to create your profile, list your offerings, and connect with eager students. Share your knowledge, build your reputation, and contribute to the growth of others.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.714-4.03 8.5-9 8.5S3 16.714 3 12c0-4.714 4.03-8.5 9-8.5S21 7.286 21 12z" />
+                        </svg>
+                        Thriving Community
+                    </h3>
+                    <p class="text-gray-700">
+                        Beyond just learning and teaching, Mzansi Skill Exchange is a community. Engage with fellow learners and instructors, collaborate on projects, ask questions, and expand your professional and personal network within a supportive environment.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-amber-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Local Focus, Global Standards
+                    </h3>
+                    <p class="text-gray-700">
+                        While our heart is in Mzansi, we strive for excellence in user experience and platform functionality, ensuring a smooth and intuitive journey for all our users, whether they are in Johannesburg, Cape Town, or a rural village.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-indigo-600 text-white p-10 md:p-16 rounded-3xl text-center shadow-xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Growing Community!</h2>
+            <p class="text-lg md:text-xl mb-8 opacity-95">
+                Become a part of Mzansi Skill Exchange and start your journey of learning, teaching, and connecting today.
+            </p>
+            <a href="#" class="inline-block bg-amber-400 text-indigo-900 font-bold text-lg px-9 py-4 rounded-full shadow-2xl hover:bg-amber-300 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-500 focus:ring-opacity-50">
+                Get Started Now
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 px-6 md:px-12 mt-16 rounded-t-xl">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Mzansi Skill Exchange</h3>
+                <p class="text-gray-400 text-sm">Connecting South Africans through knowledge sharing and skill development. Learn, teach, and grow with us.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Browse Skills</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Offer Skills</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">How It Works</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">FAQ</a></li>
+                </ul>
+            </div>
+            <!-- Contact Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-400 text-sm">Email: info@mzansiskillexchange.co.za</p>
+                <p class="text-gray-400 text-sm">Phone: +27 11 123 4567</p>
+                <div class="flex space-x-4 mt-4">
+                    <!-- Social Media Icons (Placeholders) -->
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.84c-1.11 0-2.01-.9-2.01-2.01V6.17c0-1.11.9-2.01 2.01-2.01h7.42c1.11 0 2.01.9 2.01 2.01v12.66c0 1.11-.9 2.01-2.01 2.01H8.29zm7.42-14.66H8.29v12.66h7.42V6.18zM12 17.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm0-3.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm3.5-7.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8">
+            &copy; 2025 Mzansi Skill Exchange. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

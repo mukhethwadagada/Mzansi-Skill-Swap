@@ -3,194 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mzansi SkillSwap - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Mzansi Skill Exchange - Connect, Learn, Share</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to right, #3498db, #2c3e50); /* Blue to dark blue-grey */
-            color: #ecf0f1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow: hidden; /* Prevent scrollbars from animations */
-
-            /* Background gradient animation */
-            background-size: 400% 400%;
-            animation: backgroundGradient 15s ease infinite;
+            background-color: #f0f4f8; /* Lighter, modern background */
+            color: #1e293b; /* Darker text for strong contrast */
         }
-
-        @keyframes backgroundGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .container {
-            background-color: rgba(44, 62, 80, 0.9); /* Dark blue-grey transparent */
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            width: 100%;
-            max-width: 800px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            opacity: 0; /* Start hidden for fade-in */
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            color: #f1c40f; /* Yellow */
-            text-shadow: 0 0 15px rgba(241, 196, 15, 0.8);
-        }
-
-        /* Home Page Specific Styles */
-        #home-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px; /* Adjust as needed */
-            padding: 20px;
-        }
-
-        #home-page h2 {
-            font-size: 2.5em;
-            color: #f1c40f;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(241, 196, 15, 0.6);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideInUp 0.8s ease-out 0.8s forwards; /* Delayed animation */
-        }
-
-        #home-page p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 600px;
-            color: rgba(236, 240, 241, 0.9);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideInUp 0.8s ease-out 1s forwards; /* Delayed animation */
-        }
-
-        #enterAppButton {
-            background-color: #3498db; /* Blue */
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.3em;
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
             border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            animation: pulse 2s infinite ease-in-out 1.5s forwards; /* Pulsing animation */
         }
-
-        #enterAppButton:hover {
-            background-color: #2980b9;
-            transform: translateY(-4px) scale(1.05); /* Slightly larger on hover */
-            animation: none; /* Stop pulse on hover */
+        ::-webkit-scrollbar-thumb {
+            background: #64748b;
+            border-radius: 10px;
         }
-
-        /* Icon Styling */
-        .home-icon {
-            font-size: 3em;
-            color: #27ae60; /* Emerald Green */
-            margin: 0 15px;
-            animation: bounceIn 1s ease-out 0.5s forwards, float 3s ease-in-out infinite 1.5s; /* Combined animations */
-            opacity: 0; /* Start hidden for bounce-in */
-            display: inline-block; /* Essential for transform */
-        }
-
-        .home-icon:nth-child(2) { animation-delay: 0.7s, 1.7s; } /* Stagger animation */
-        .home-icon:nth-child(3) { animation-delay: 0.9s, 1.9s; }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.1); opacity: 1; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-            #home-page h2 {
-                font-size: 2em;
-            }
-            #home-page p {
-                font-size: 1em;
-            }
-            #enterAppButton {
-                font-size: 1.1em;
-                padding: 12px 25px;
-            }
-            .home-icon {
-                font-size: 2.5em; /* Smaller icons on mobile */
-                margin: 0 10px;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Mzansi SkillSwap</h1>
-        
-        <!-- Home Page Content -->
-        <div id="home-page" class="tab-content active">
-            <h2>Welcome to Mzansi SkillSwap!</h2>
-            <p>
-                <i class="fas fa-handshake home-icon"></i>
-                <i class="fas fa-lightbulb home-icon"></i>
-                <i class="fas fa-users home-icon"></i>
-            </p>
-            <p>
-                Connect with your community to exchange skills and services without money.
-                Whether you need a hand with gardening, want to learn a new language,
-                or can offer your plumbing expertise, Mzansi SkillSwap helps you
-                find and provide value locally. Build stronger bonds, share talents,
-                and empower your neighbourhood!
-            </p>
-            <button id="enterAppButton">Start Swapping!</button>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg py-4 px-6 md:px-12 flex justify-between items-center rounded-b-xl">
+        <div class="flex items-center space-x-3">
+            <!-- Logo/Site Name with a more distinct icon -->
+            <svg class="h-9 w-9 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="text-2xl font-extrabold text-gray-900">Mzansi Skill Exchange</span>
         </div>
-    </div>
+        <!-- Navigation Links (Hidden on small screens, shown on medium and up) -->
+        <div class="hidden md:flex space-x-8">
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Home</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Browse Skills</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Offer Skills</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">How It Works</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">About Us</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Contact</a>
+        </div>
+        <!-- Call to Action Buttons -->
+        <div class="flex items-center space-x-4">
+            <button class="hidden md:block px-6 py-2 border border-gray-300 text-gray-800 rounded-full hover:bg-gray-100 transition duration-300 shadow-sm font-medium">Log In</button>
+            <button class="px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg font-semibold transform hover:scale-105">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="flex-grow bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20 md:py-32 flex items-center justify-center relative overflow-hidden rounded-b-3xl shadow-xl">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;utf8,<svg width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 100 100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><circle cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;5&quot; fill=&quot;%23ffffff&quot; opacity=&quot;0.1&quot; /><circle cx=&quot;75&quot; cy=&quot;75&quot; r=&quot;5&quot; fill=&quot;%23ffffff&quot; opacity=&quot;0.1&quot; /><circle cx=&quot;75&quot; cy=&quot;25&quot; r=&quot;5&quot; fill=&quot;%23ffffff&quot; opacity=&quot;0.1&quot; /><circle cx=&quot;25&quot; cy=&quot;75&quot; r=&quot;5&quot; fill=&quot;%23ffffff&quot; opacity=&quot;0.1&quot; /></svg>'); background-size: 50px 50px;"></div>
+
+        <div class="container mx-auto text-center px-6 md:px-12 relative z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-md">
+                Unlock Your Potential, Share Your Talents
+            </h1>
+            <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-95 font-light">
+                Connect with a vibrant community in Mzansi to learn new skills, share your expertise, and grow together.
+            </p>
+            <a href="#" class="inline-block bg-amber-400 text-indigo-900 font-bold text-lg px-9 py-4 rounded-full shadow-2xl hover:bg-amber-300 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-500 focus:ring-opacity-50">
+                Start Exploring Skills
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 md:px-12 py-16">
+
+        <!-- How It Works Section -->
+        <section class="mb-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1: Discover & Learn -->
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col items-center">
+                    <div class="bg-indigo-100 p-4 rounded-full inline-block mb-6">
+                        <svg class="h-10 w-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.394 1.878A8.002 8.002 0 0112 4c.783 0 1.53.15 2.228.42l.394-1.878" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">1. Discover & Learn</h3>
+                    <p class="text-gray-600 text-center">Explore a diverse range of skills offered by talented individuals across Mzansi. Find what you want to learn, from coding to cooking, and connect with instructors.</p>
+                </div>
+
+                <!-- Step 2: Share Your Expertise -->
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col items-center">
+                    <div class="bg-green-100 p-4 rounded-full inline-block mb-6">
+                        <svg class="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">2. Share Your Expertise</h3>
+                    <p class="text-gray-600 text-center">Have a skill to teach? Create a profile, list your offerings, and connect with eager learners. Empower others and earn recognition for your talents.</p>
+                </div>
+
+                <!-- Step 3: Connect & Grow -->
+                <div class="bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300 border border-gray-100 flex flex-col items-center">
+                    <div class="bg-purple-100 p-4 rounded-full inline-block mb-6">
+                        <svg class="h-10 w-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M12 20.005v-2.121m0-9.966V4.354M3.682 8.354a4 4 0 115.636 5.636M16.318 8.354a4 4 0 10-5.636 5.636M3.464 16.536a4 4 0 115.657 5.657M16.536 16.536a4 4 0 10-5.657 5.657" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">3. Connect & Grow</h3>
+                    <p class="text-gray-600 text-center">Engage in a supportive community. Exchange knowledge, collaborate on projects, and expand your network. The more you connect, the more you grow!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Skills Section (Placeholder) -->
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">Featured Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <img src="https://placehold.co/400x250/E0F2F7/000000?text=Web+Development" alt="Web Development" class="rounded-lg mb-4 w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Web Development Basics</h3>
+                    <p class="text-gray-600 mb-4">Learn HTML, CSS, and JavaScript to build your first websites. Perfect for beginners!</p>
+                    <div class="flex items-center text-gray-500 text-sm mb-4">
+                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h-5v-9h5v9zM19 10h3v10h-3V10zM5 10h3v10H5V10zM12 20v-9M12 4a3 3 0 100 6 3 3 0 000-6z" /></svg>
+                        <span>Beginner Friendly</span>
+                    </div>
+                    <button class="w-full bg-indigo-500 text-white py-2 rounded-full hover:bg-indigo-600 transition duration-300">View Skill</button>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <img src="https://placehold.co/400x250/E0F7E0/000000?text=Graphic+Design" alt="Graphic Design" class="rounded-lg mb-4 w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Introduction to Graphic Design</h3>
+                    <p class="text-gray-600 mb-4">Master the fundamentals of design, typography, and color theory using popular tools.</p>
+                    <div class="flex items-center text-gray-500 text-sm mb-4">
+                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8H4a2 2 0 01-2-2V6a2 2 0 012-2h2m10 10v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2m10-4h2a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4 6H9m6 0h.01" /></svg>
+                        <span>Creative Skills</span>
+                    </div>
+                    <button class="w-full bg-indigo-500 text-white py-2 rounded-full hover:bg-indigo-600 transition duration-300">View Skill</button>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <img src="https://placehold.co/400x250/F7F0E0/000000?text=Language+Exchange" alt="Language Exchange" class="rounded-lg mb-4 w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Zulu Language Exchange</h3>
+                    <p class="text-gray-600 mb-4">Practice conversational Zulu with native speakers and improve your fluency.</p>
+                    <div class="flex items-center text-gray-500 text-sm mb-4">
+                        <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10 10V9a1 1 0 011-1h2a1 1 0 011 1v1m-4 4h4m-4-4h4m-4 0a2 2 0 100 4 2 2 0 000-4z" /></svg>
+                        <span>Community Focus</span>
+                    </div>
+                    <button class="w-full bg-indigo-500 text-white py-2 rounded-full hover:bg-indigo-600 transition duration-300">View Skill</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section (Placeholder) -->
+        <section class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">What Our Community Says</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <p class="text-gray-700 mb-4 italic">"Mzansi Skill Exchange helped me find an amazing mentor for my photography skills. The platform is so easy to use and the community is incredibly supportive!"</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/F7E0F0/000000?text=User1" alt="User Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Nomusa Dlamini</p>
+                            <p class="text-gray-500 text-sm">Photography Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                    <p class="text-gray-700 mb-4 italic">"I've been able to share my coding knowledge and connect with so many eager learners. It's rewarding to see others grow with my guidance. Highly recommend!"</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/E0F0F7/000000?text=User2" alt="User Avatar" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Sipho Mkhize</p>
+                            <p class="text-gray-500 text-sm">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-indigo-600 text-white p-10 md:p-16 rounded-3xl text-center shadow-xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Skill Journey?</h2>
+            <p class="text-lg md:text-xl mb-8 opacity-95">Join Mzansi Skill Exchange today and unlock a world of learning and teaching opportunities.</p>
+            <a href="#" class="inline-block bg-amber-400 text-indigo-900 font-bold text-lg px-9 py-4 rounded-full shadow-2xl hover:bg-amber-300 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-500 focus:ring-opacity-50">
+                Sign Up for Free
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 px-6 md:px-12 mt-16 rounded-t-xl">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Mzansi Skill Exchange</h3>
+                <p class="text-gray-400 text-sm">Connecting South Africans through knowledge sharing and skill development. Learn, teach, and grow with us.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Browse Skills</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Offer Skills</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">How It Works</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">FAQ</a></li>
+                </ul>
+            </div>
+            <!-- Contact Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-400 text-sm">Email: info@mzansiskillexchange.co.za</p>
+                <p class="text-gray-400 text-sm">Phone: +27 11 123 4567</p>
+                <div class="flex space-x-4 mt-4">
+                    <!-- Social Media Icons (Placeholders) -->
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.84c-1.11 0-2.01-.9-2.01-2.01V6.17c0-1.11.9-2.01 2.01-2.01h7.42c1.11 0 2.01.9 2.01 2.01v12.66c0 1.11-.9 2.01-2.01 2.01H8.29zm7.42-14.66H8.29v12.66h7.42V6.18zM12 17.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm0-3.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm3.5-7.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8">
+            &copy; 2025 Mzansi Skill Exchange. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>
